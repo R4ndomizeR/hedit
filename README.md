@@ -3,6 +3,7 @@ alt:V Ingame Handling Editor
 This resource will allow you to change handling of vehicles in game.
 
 **Here are some quick links**:
+* [Forum topic](https://forum.altv.mp/topic/397-ingame-handling-editor/)
 * [Issue/bug tracker](https://github.com/Enerv/hedit/issues)
 * [See list of releases](https://github.com/Enerv/hedit/releases)
 
