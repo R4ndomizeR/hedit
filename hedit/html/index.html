@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/default.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli|Raleway&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app" v-if="visible">
+        <div class="title">
+            <a v-on:click="close()">X</a>
+            <span>Vehicle Handling Editor v1.0</span>
+        </div>
+        <div class="box">
+            <div class="container">
+                <template v-for="(value, property) in properties">
+                    <hr v-bind:data-content="property"></hr>
+                    <div class="input">
+                        <template v-if="property === 'centreOfMassOffset' || property === 'inertiaMultiplier'">
+                            <input type="number" style="width: 27.5%" v-model="properties[property][0]" @change="emit(property)" spellcheck="false">
+                            <input type="number" style="width: 27.5%" v-model="properties[property][1]" @change="emit(property)" spellcheck="false">
+                            <input type="number" style="width: 27.5%" v-model="properties[property][2]" @change="emit(property)" spellcheck="false">
+                        </template>
+                        <template v-else>
+                            <input type="number" v-model="properties[property]" @change="emit(property, value)" spellcheck="false">
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/app.js"></script>
+    <script>
+        /* Vehicle Handling Editor (v1.0)
+        * _dusieq#0404, Enerv#6489 (Discord)
+        * GPLv2 / MIT License
+        */
+
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                alt.emit('ready');
+            });
+        });
+
+        if ('alt' in window) {
+            alt.on('menu', (enabled, data) => {
+                if (data) {
+                    data = JSON.parse(data);
+
+                    for (const key in data) {
+                        const property = data[key];
+                        if (property === 'centreOfMassOffset' || property === 'inertiaMultiplier') {
+                            app.properties[key] = [property[0], property[1], property[2]];
+                        } else {
+                            app.properties[key] = property;
+                        }
+                    }
+                }
+                app.visible = enabled;
+            });
+        }
+    </script>
+</body>
+</html>
