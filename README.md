@@ -9,7 +9,6 @@ This resource will allow you to change handling of vehicles in game.
 
 **Check also**:
 * [Visual Vehicle Spawner](https://github.com/dusieq95/Visual-Vehicle-Spawner)
-* [Need for Speed: V – Racing server in alt:V](https://nfsv.net)
 
 Getting started
 -------
