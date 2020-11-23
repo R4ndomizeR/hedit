@@ -73,7 +73,7 @@ function menu(toggle) {
         const vehicle = alt.Player.local.vehicle;
         if (!vehicle) return notify('You are not in the vehicle!');
 
-        const handling = alt.HandlingData.getForModel(vehicle.model);
+        const handling = alt.HandlingData.getForHandlingName(vehicle.model);
         if (!handling) return notify('Handling for model not available!');
 
         let data = {};
@@ -135,7 +135,7 @@ view.on('execute', (property, value) => {
         value = JSON.parse(value);
     }
 
-    const handling = alt.HandlingData.getForModel(vehicle.model);
+    const handling = alt.HandlingData.getForHandlingName(vehicle.model);
     handling[property] = value;
 
     notify('Handling for model changed.');
